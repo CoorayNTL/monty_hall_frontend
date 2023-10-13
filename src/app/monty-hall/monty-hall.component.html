@@ -1,29 +1,33 @@
-<div id="doors">
-  <div *ngFor="let door of doors; let i = index" class="door-container">
-    <div class="door" (click)="pickDoor(door)">{{ i + 1 }}</div>
-    <div class="content">{{ door.prize }}</div>
-  </div>
-</div>
-<div id="instruction">
-  <p>{{ state === 'PICK' ? 'Pick a Door!' : 'Do you want to switch?' }}</p>
-  <div class="choices" *ngIf="state !== 'PICK'">
-    <button (click)="chooseDoor(true)">Yes</button>
-    <button (click)="chooseDoor(false)">No</button>
-  </div>
-  <button id="play-again" (click)="reset()">Play Again</button>
-</div>
-<div id="stats">
-  <div id="switches">
-    <p class="total">{{ stats.totalSwitchPlays }}</p>
-    <div class="bar" [style.width]="switchWinRate">
-      <span class="win-rate">{{ switchWinRate }}</span>
+<div>
+  <div id="doors">
+    <div class="door" *ngFor="let door of doors; let i = index" (click)="pickDoor(i)">
+      <span *ngIf="door.revealed">{{ door.prize }}</span>
     </div>
   </div>
-  <div id="stays">
-    <p class="total">{{ stats.totalStayPlays }}</p>
-    <div class="bar" [style.width]="stayWinRate">
-      <span class="win-rate">{{ stayWinRate }}</span>
-    </div>
-  </div>
+
+  <button (click)="playerSwitch()" *ngIf="state === 'REVEAL'">Switch</button>
+  <button (click)="playerStay()" *ngIf="state === 'REVEAL'">Stay</button>
+  <button (click)="startOver()" *ngIf="state === 'PICK'">Play Again</button>
+
+  <p class="outcome">{{ outcome }}</p>
+
+  <p class="win-rate">
+    Total Switches: {{ totalSwitchPlays }}<br />
+    <!-- Switch Win Rate: {{ switchRate.toFixed(2) }}%<br /> -->
+    Total Stays: {{ totalStayPlays }}<br />
+    <!-- Stay Win Rate: {{ stayRate.toFixed(2) }}% -->
+  </p>
+
+  <h2>Simulations</h2>
+  <label for="simulations">Number of Simulations:</label>
+  <input type="number" id="simulations" [(ngModel)]="simulations" />
+
+  <label for="changeDoor">Change the Door:</label>
+  <input type="checkbox" id="changeDoor" [(ngModel)]="changeDoor" />
+
+  <button (click)="runSimulations()">Run Simulations</button>
+
+  <h3>Simulation Results</h3>
+  <p>Switch Win Rate: {{ switchRate }}%</p>
+  <p>Stay Win Rate: {{ stayRate }}%</p>
 </div>
-<button id="autorun" (click)="toggleAutoMode()" [class.on]="autoMode">Auto Mode</button>
