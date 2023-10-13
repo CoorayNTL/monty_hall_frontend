@@ -6,7 +6,7 @@ npm install <br/>
 ng serve 
 
 ## Interface View
-![Monty-Hall](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/c05435fd-be1c-4c74-8630-d2d130ae1f64)
+![Monty-Hall](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/9d0ae861-141c-48a4-afe8-586af97c4503)
 
 ## Mathematical Overview
  ![20231014_011534](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/e1e78fe5-63bc-429c-b07d-9b49b4b0a500)
