@@ -1,1 +1,29 @@
-<p>monty-hall works!</p>
+<div id="doors">
+  <div *ngFor="let door of doors; let i = index" class="door-container">
+    <div class="door" (click)="pickDoor(door)">{{ i + 1 }}</div>
+    <div class="content">{{ door.prize }}</div>
+  </div>
+</div>
+<div id="instruction">
+  <p>{{ state === 'PICK' ? 'Pick a Door!' : 'Do you want to switch?' }}</p>
+  <div class="choices" *ngIf="state !== 'PICK'">
+    <button (click)="chooseDoor(true)">Yes</button>
+    <button (click)="chooseDoor(false)">No</button>
+  </div>
+  <button id="play-again" (click)="reset()">Play Again</button>
+</div>
+<div id="stats">
+  <div id="switches">
+    <p class="total">{{ stats.totalSwitchPlays }}</p>
+    <div class="bar" [style.width]="switchWinRate">
+      <span class="win-rate">{{ switchWinRate }}</span>
+    </div>
+  </div>
+  <div id="stays">
+    <p class="total">{{ stats.totalStayPlays }}</p>
+    <div class="bar" [style.width]="stayWinRate">
+      <span class="win-rate">{{ stayWinRate }}</span>
+    </div>
+  </div>
+</div>
+<button id="autorun" (click)="toggleAutoMode()" [class.on]="autoMode">Auto Mode</button>

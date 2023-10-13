@@ -1,0 +1,106 @@
+#doors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.door-container {
+  text-align: center;
+  margin: 10px;
+}
+
+.door {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid #2980b9;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.door:hover {
+  background-color: #2980b9;
+}
+
+.content {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#instruction {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.choices button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#play-again {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+#switches, #stays {
+  text-align: center;
+}
+
+.total {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bar {
+  background-color: #ecf0f1;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.win-rate {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+#autorun {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#autorun.on {
+  background-color: #27ae60;
+}

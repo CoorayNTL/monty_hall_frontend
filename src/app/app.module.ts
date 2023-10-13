@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MontyHallComponent } from './monty-hall/monty-hall.component';
-import { DoorComponent } from './door/door.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MontyHallComponent,
-    DoorComponent
+    MontyHallComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
