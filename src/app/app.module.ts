@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MontyHallComponent } from './monty-hall/monty-hall.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+//import { MontyHallService } from './monty-hall.service';
 @NgModule({
   declarations: [
     AppComponent,
