@@ -9,5 +9,5 @@ ng serve
 ![Monty-Hall](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/9d0ae861-141c-48a4-afe8-586af97c4503)
 
 ## Mathematical Overview
- ![20231014_011534](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/e1e78fe5-63bc-429c-b07d-9b49b4b0a500)
+![20231014_011534](https://github.com/CoorayNTL/monty_hall_frontend/assets/96631498/e72f0579-1732-4eff-90a3-09e92629d1ab)
 
