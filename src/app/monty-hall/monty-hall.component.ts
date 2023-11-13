@@ -45,14 +45,15 @@ export class MontyHallComponent  {
       this.reveal();
     }
   }
-
+ 
   reveal() { // Method that runs when the user clicks on a door to reveal it (after they have picked a door)
     const options = this.doors.filter((door, index) => !door.revealed && index !== this.pickedDoor);
     this.revealedDoor = options[Math.floor(Math.random() * options.length)];
-    this.revealedDoor.revealed = true;
 
+    this.revealedDoor.revealed = true;
     this.switchButtonVisible = true;
     this.stayButtonVisible = true;
+
   }
 
   playerSwitch() { // Method that runs when the user clicks the switch button (after they have picked a door and revealed a door)
