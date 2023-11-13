@@ -1,33 +1,64 @@
 <div>
   <div id="doors">
-    <div class="door" *ngFor="let door of doors; let i = index" (click)="pickDoor(i)">
+    <div class="door" *ngFor="let door of doors; let i = index" [class.clickable]="state === 'PICK'" (click)="state === 'PICK' && pickDoor(i)">
       <span *ngIf="door.revealed">{{ door.prize }}</span>
     </div>
   </div>
 
-  <button (click)="playerSwitch()" *ngIf="state === 'REVEAL'">Switch</button>
-  <button (click)="playerStay()" *ngIf="state === 'REVEAL'">Stay</button>
-  <button (click)="startOver()" *ngIf="state === 'PICK'">Play Again</button>
+  <div *ngIf="state === 'REVEAL'">
+    <button (click)="playerSwitch()" *ngIf="switchButtonVisible">Switch</button>
+    <button (click)="playerStay()" *ngIf="stayButtonVisible">Stay</button>
+  </div>
+  <button (click)="startOver()" *ngIf="playAgainVisible">Play Again</button>
 
   <p class="outcome">{{ outcome }}</p>
 
   <p class="win-rate">
-    Total Switches: {{ totalSwitchPlays }}<br />
-    <!-- Switch Win Rate: {{ switchRate.toFixed(2) }}%<br /> -->
-    Total Stays: {{ totalStayPlays }}<br />
-    <!-- Stay Win Rate: {{ stayRate.toFixed(2) }}% -->
+    Total Switches: {{ totalSwitchPlays }}<br /><br />
+    Manullay Switch Win Rate: {{ manullyswitchRate.toFixed(2) }}%<br /><br />
+    Total Stays: {{ totalStayPlays }}<br /><br />
+    Manullay Stay Win Rate: {{ manullystayRate.toFixed(2) }}%
   </p>
 
   <h2>Simulations</h2>
   <label for="simulations">Number of Simulations:</label>
-  <input type="number" id="simulations" [(ngModel)]="simulations" />
+  <input type="number" id="simulations" [(ngModel)]="simulations" min="1"/>
 
   <label for="changeDoor">Change the Door:</label>
   <input type="checkbox" id="changeDoor" [(ngModel)]="changeDoor" />
 
+  <div>
+    <input
+    type="text"
+    id="email"
+    email="email"
+    class="form-control"
+    required
+    minlength="4"
+    appForbiddenEmail="bob"
+    [(ngModel)]="email"
+
+  />
+
+  <!-- <div
+    *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="alert"
+  >
+    <div *ngIf="email.errors?.['required']">Email is required.</div>
+    <div *ngIf="email.errors?.['minlength']">
+      Email must be at least 4 characters long.
+    </div>
+    <div *ngIf="email.errors?.['forbiddenEmail']">
+      Name cannot be Bob.
+    </div>
+  </div> -->
+
+  </div>
+
+
   <button (click)="runSimulations()">Run Simulations</button>
 
   <h3>Simulation Results</h3>
-  <p>Switch Win Rate: {{ switchRate }}%</p>
-  <p>Stay Win Rate: {{ stayRate }}%</p>
+  <p>Switch Win Rate: {{ switchRate.toFixed(2) }}%</p>
+  <p>Stay Win Rate: {{ stayRate.toFixed(2) }}%</p>
 </div>

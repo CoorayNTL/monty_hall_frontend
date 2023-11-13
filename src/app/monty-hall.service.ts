@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { MontyHall } from './monty-hall.model';
+import { catchError, retry } from 'rxjs/operators';
 
-@Injectable()
-export class ConfigService {
-  constructor(private http: HttpClient) { }
-}
-
+@Injectable({
+  providedIn: 'root'
+})
 
 export class MontyHallService {
+  private apiUrl = 'https://localhost:7088/api/Monty_Hall/RunSimulation';
 
-  private apiUrl = 'https://localhost:7177/api/monty-hall';
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  simulateMontyHall(simulationData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/simulate`, simulationData);
+  runMontyHallSimulations(simulations: number, changeDoor: boolean): Observable<any> {
+    return this.http.get(`${this.apiUrl}/monty-hall`, {
+      params: { simulations: simulations.toString(), changeDoor: changeDoor.toString() }
+    });
   }
 
-  getSimulationResults(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
-  }
 
 }
